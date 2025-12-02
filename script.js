@@ -3,11 +3,13 @@ let score = 0;
 
 const showScore = document.querySelector(".score");
 
+// submit button event
 const form = document.querySelector(".options");
 form.addEventListener("submit", (event) => {
   const formData = new FormData(form);
   const selected = formData.get("answerOptions");
   console.log(selected);
+  // prevent page from reloading
   event.preventDefault();
   // if statement for right or wrong answer
   if (selected === correctAnswer) {
@@ -21,6 +23,7 @@ form.addEventListener("submit", (event) => {
 })
 
 // API
+const generalUrl = "https://opentdb.com/api.php?amount=15&category=9&type=multiple";
 const sportsUrl = "https://opentdb.com/api.php?amount=10";
 const sportsHard =
   "https://opentdb.com/api.php?amount=10&category=21&difficulty=hard";
@@ -30,7 +33,7 @@ const tenRandom =
   "https://opentdb.com/api.php?amount=10&category=10&type=multiple";
 
   // connect to API 
-const url = sportsEasy;
+const url = generalUrl;
 
 const getQuestion = async () => {
   try {
