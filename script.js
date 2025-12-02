@@ -1,5 +1,8 @@
+let questions = [];
+let questionDetails = [];
 let correctAnswer = "";
 let score = 0;
+let currentIndex = 0; 
 
 const showScore = document.querySelector(".score");
 
@@ -19,6 +22,10 @@ form.addEventListener("submit", (event) => {
   } else {
     console.log("wrong answer!");
   }
+  currentIndex++;
+  const options = document.querySelector(".options");
+  options.querySelectorAll('input[type="radio"], label').forEach(el => el.remove());
+  loadQuestion();
 
 })
 
@@ -35,40 +42,48 @@ const tenRandom =
   // connect to API 
 const url = generalUrl;
 
-const getQuestion = async () => {
+const getQuestions = async () => {
   try {
     const response = await fetch(url);
-    const questionDetails = await response.json();
+    questionDetails = await response.json();
+    questions = questionDetails.results;
+    currentIndex = 0; 
     console.log(questionDetails);
 
     // get question 
-    const question = questionDetails.results[0].question;
-    const questionSpace = document.querySelector(".question");
-    questionSpace.innerHTML = `<pre>${question}</pre>`;
-    // get alternatives 
-    const alternatives = [];
-    questionDetails.results[0].incorrect_answers.forEach((answer) => {
-      alternatives.push(answer);
-    });
-    correctAnswer = questionDetails.results[0].correct_answer;
-    alternatives.push(correctAnswer);
-    console.log(alternatives);
-    // get answer alternatives and put into form
-    const options = document.querySelector(".options");
-    alternatives.forEach((alternative) => {
-      const option = document.createElement("input");
-      option.setAttribute("type", "radio");
-      option.name = "answerOptions";
-      option.value = alternative;
-      options.appendChild(option);
-      const label = document.createElement("label");
-      options.appendChild(label);
-      // add "for" for label?? 
-      label.innerText = alternative;
-    });
+    loadQuestion(); 
+
   } catch (error) {
     console.error(error);
   }
 };
 
-getQuestion();
+const questionSpace = document.querySelector(".question");
+
+function loadQuestion() {
+    const question = questions[currentIndex];
+
+    if (!question) {
+        console.log("No more questions!");
+        return;
+    } else {
+        // get alternatives 
+    questionSpace.innerHTML = `<pre>${question.question}</pre>`;
+    const alternatives = [];
+    questionDetails.results[currentIndex].incorrect_answers.forEach((answer) => {
+      alternatives.push(answer);
+    });
+    correctAnswer = questionDetails.results[currentIndex].correct_answer;
+    alternatives.push(correctAnswer);
+    console.log(alternatives);
+    // get answer alternatives and put into form
+    const options = document.querySelector(".options");
+    alternatives.forEach((alternative) => {
+
+      const label = document.createElement("label");
+      label.innerHTML = `<input type="radio" name="answerOptions" value="${alternative}"> <pre>${alternative}</pre>`;
+      options.appendChild(label);
+    });
+  }}
+
+getQuestions();
