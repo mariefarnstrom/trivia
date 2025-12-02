@@ -1,8 +1,8 @@
 html {
+    font-size: 16px;
     box-sizing: border-box;
 }
 body {
-    font-size: 16px;
     display: flex;
     justify-content: center;
 }
@@ -38,12 +38,14 @@ p {
     margin: 0 4rem;
 }
 
-.answerInput {
+/* .answerInput {
     width: 100%;
     height: 7rem;
     border-radius: 7%;
-}
+} */
 
 .options {
     width: 70%;
+    display: flex;
+    flex-direction: column;
 }
