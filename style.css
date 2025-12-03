@@ -4,7 +4,7 @@ html {
 }
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     background-image: url(background.png);
 }
 
@@ -19,6 +19,15 @@ body {
     margin: 0.5rem;
 }
 
+.scoreAndOptions {
+    color: #fff;
+    margin: 1.5rem;
+}
+
+.score {
+    font-size: 3rem;
+    margin: 0;
+}
 pre {
     white-space: pre-wrap;
 }
@@ -27,23 +36,15 @@ pre {
     flex-direction: column;
     align-items: center;
     position: relative;
-    margin-top: 10vh;
-    height: 40vh;
-    aspect-ratio: 3/2;
-    border-radius: 3%;
+    height: 50vh;
+    border-radius: 15px;
     background-color: rgb(198, 216, 237);
 }
 
-p {
-    /* height: 7rem; */
-    margin: 0 4rem;
+.question {
+    margin: 1rem 4rem 0 4rem;
+    font-weight: bold;
 }
-
-/* .answerInput {
-    width: 100%;
-    height: 7rem;
-    border-radius: 7%;
-} */
 
 .options {
     width: 70%;
@@ -54,3 +55,23 @@ p {
 label {
     display: flex;
 }
+
+.submitButton {
+    width: 15rem;
+    height: 1.5rem;
+    border-radius: 15px;
+    background-color: rgb(76, 106, 188);
+    color: #fff;
+    position: absolute;
+    bottom: 3rem;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 400px) {
+    .question {
+        margin: 1rem 2rem 0 2rem;
+    }
+
+};

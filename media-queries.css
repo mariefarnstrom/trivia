@@ -1,0 +1,16 @@
+@media screen and (min-width: 600px) {
+    .questionCard {
+        width: 38rem;
+        align-self: center;
+    }
+    .scoreAndOptions {
+        margin-left: 15vw;
+    }
+};
+
+@media screen and (max-width: 400px) {
+    .question {
+        margin: 1rem 2rem 0 2rem;
+    }
+
+};

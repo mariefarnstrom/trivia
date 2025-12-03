@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trivia</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="media-queries.css">
   </head>
   <body>
     <section class="scoreAndOptions">
@@ -12,17 +13,17 @@
         <p>Your score:</p>
         <p class="score">0</p>
       </div>
-      <div class="difficulty">
+      <!-- <div class="difficulty">
         <label>Easy</label>
         <input type="radio" name="difficulty" value="easy" />
         <label>Hard</label>
         <input type="radio" name="difficulty" value="hard" />
-      </div>
+      </div> -->
     </section>
     <section class="questionCard">
       <p class="question"></p>
       <form class="options">
-        <button type="submit">Answer</button>
+        <button class="submitButton" type="submit">Answer</button>
       </form>
     </section>
 

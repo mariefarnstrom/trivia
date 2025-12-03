@@ -67,13 +67,14 @@ const questionSpace = document.querySelector(".question");
 
 function loadQuestion() {
     const question = questions[currentIndex];
+    let currentQuestion = currentIndex + 1;
 
     if (!question) {
         console.log("No more questions!");
         return;
     } else {
     // get alternatives 
-    questionSpace.innerHTML = `<pre>${question.question}</pre>`;
+    questionSpace.innerHTML = `<pre>${currentQuestion}. ${question.question}</pre>`;
     const alternatives = [];
     questionDetails.results[currentIndex].incorrect_answers.forEach((answer) => {
       alternatives.push(answer);
