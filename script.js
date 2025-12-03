@@ -4,6 +4,14 @@ let correctAnswer = "";
 let score = 0;
 let currentIndex = 0; 
 
+// shuffle function 
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
 const showScore = document.querySelector(".score");
 
 // submit button event
@@ -32,14 +40,11 @@ form.addEventListener("submit", (event) => {
 // API
 const generalUrl = "https://opentdb.com/api.php?amount=15&category=9&type=multiple";
 const sportsUrl = "https://opentdb.com/api.php?amount=10";
-const sportsHard =
-  "https://opentdb.com/api.php?amount=10&category=21&difficulty=hard";
-const sportsEasy =
-  "https://opentdb.com/api.php?amount=1&category=21&difficulty=easy";
-const tenRandom =
-  "https://opentdb.com/api.php?amount=10&category=10&type=multiple";
+const sportsHard = "https://opentdb.com/api.php?amount=10&category=21&difficulty=hard";
+const sportsEasy = "https://opentdb.com/api.php?amount=1&category=21&difficulty=easy";
+const tenRandom = "https://opentdb.com/api.php?amount=10&category=10&type=multiple";
 
-  // connect to API 
+// connect to API 
 const url = generalUrl;
 
 const getQuestions = async () => {
@@ -67,7 +72,7 @@ function loadQuestion() {
         console.log("No more questions!");
         return;
     } else {
-        // get alternatives 
+    // get alternatives 
     questionSpace.innerHTML = `<pre>${question.question}</pre>`;
     const alternatives = [];
     questionDetails.results[currentIndex].incorrect_answers.forEach((answer) => {
@@ -75,6 +80,10 @@ function loadQuestion() {
     });
     correctAnswer = questionDetails.results[currentIndex].correct_answer;
     alternatives.push(correctAnswer);
+
+    // shuffle alternatives
+    shuffle(alternatives);
+
     console.log(alternatives);
     // get answer alternatives and put into form
     const options = document.querySelector(".options");
