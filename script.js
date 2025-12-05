@@ -19,6 +19,13 @@ function shuffle(array) {
   }
 }
 
+// decode html to match correct answer 
+function decodeHTML(html) {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+}
+
 const welcome = document.querySelector(".welcome");
 const scoreTracker = document.querySelector(".scoreTracker");
 const scoreCard = document.querySelector(".scoreCard");
@@ -117,9 +124,9 @@ function loadQuestion() {
     questionSpace.innerHTML = `<pre>${currentQuestion}. ${question.question}</pre>`;
     const alternatives = [];
     questionDetails.results[currentIndex].incorrect_answers.forEach((answer) => {
-      alternatives.push(answer);
+      alternatives.push(decodeHTML(answer));
     });
-    correctAnswer = questionDetails.results[currentIndex].correct_answer;
+    correctAnswer = decodeHTML(questionDetails.results[currentIndex].correct_answer);
     alternatives.push(correctAnswer);
 
     // shuffle alternatives
