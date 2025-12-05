@@ -23,27 +23,37 @@ const welcome = document.querySelector(".welcome");
 const scoreTracker = document.querySelector(".scoreTracker");
 const scoreCard = document.querySelector(".scoreCard");
 const questionCard = document.querySelector(".questionCard");
+const options = document.querySelector(".options");
 const showScore = document.querySelector(".score");
 const finalScore = document.querySelector(".finalScore");
 
 // Category choice submit button event
-const chooseCategory = document.querySelector(".chooseCategory");
-chooseCategory.addEventListener("submit", (e) => {
-  const formData = new FormData(chooseCategory);
+const chooseCategoryForms = document.querySelectorAll(".chooseCategory");
+// const chooseCategory = document.querySelector(".chooseCategory");
+chooseCategoryForms.forEach((form) => {
+  form.addEventListener("submit", async (e) => {
+// chooseCategory.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
   const selected = formData.get("categories");
   url = selected;
-  e.preventDefault();
   console.log(url);
+  // reset variables
+  currentIndex = 0;
+  questions = [];
   score = 0;
   showScore.innerText = score;
   scoreCard.classList.add("invisible");
+  // remove previous answer alternatives
+  options.querySelectorAll('input[type="radio"], label').forEach(el => el.remove());
+  // get new questions
   getQuestions();
   welcome.classList.add("invisible");
   setTimeout(() => {
   questionCard.classList.remove("invisible");
   scoreTracker.classList.remove("invisible");
   }, 700)
-  
+  })
 })
 
 // answer submit button event
@@ -67,7 +77,6 @@ answerForm.addEventListener("submit", (event) => {
     console.log("wrong answer!");
   }
   currentIndex++;
-  const options = document.querySelector(".options");
   options.querySelectorAll('input[type="radio"], label').forEach(el => el.remove());
   loadQuestion();
 
