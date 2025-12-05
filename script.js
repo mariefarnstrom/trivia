@@ -1,3 +1,10 @@
+// API
+const generalUrl = "https://opentdb.com/api.php?amount=10&category=9&type=multiple";
+const sportsUrl = "https://opentdb.com/api.php?amount=10&category=21&type=multiple";
+const musicUrl = "https://opentdb.com/api.php?amount=10&category=12&type=multiple";
+
+let url = generalUrl;
+
 let questions = [];
 let questionDetails = [];
 let correctAnswer = "";
@@ -12,12 +19,37 @@ function shuffle(array) {
   }
 }
 
+const welcome = document.querySelector(".welcome");
+const scoreTracker = document.querySelector(".scoreTracker");
+const scoreCard = document.querySelector(".scoreCard");
+const questionCard = document.querySelector(".questionCard");
 const showScore = document.querySelector(".score");
+const finalScore = document.querySelector(".finalScore");
 
-// submit button event
-const form = document.querySelector(".options");
-form.addEventListener("submit", (event) => {
-  const formData = new FormData(form);
+// Category choice submit button event
+const chooseCategory = document.querySelector(".chooseCategory");
+chooseCategory.addEventListener("submit", (e) => {
+  const formData = new FormData(chooseCategory);
+  const selected = formData.get("categories");
+  url = selected;
+  e.preventDefault();
+  console.log(url);
+  score = 0;
+  showScore.innerText = score;
+  scoreCard.classList.add("invisible");
+  getQuestions();
+  welcome.classList.add("invisible");
+  setTimeout(() => {
+  questionCard.classList.remove("invisible");
+  scoreTracker.classList.remove("invisible");
+  }, 700)
+  
+})
+
+// answer submit button event
+const answerForm = document.querySelector(".options");
+answerForm.addEventListener("submit", (event) => {
+  const formData = new FormData(answerForm);
   const selected = formData.get("answerOptions");
   console.log(selected);
   // prevent page from reloading
@@ -26,6 +58,10 @@ form.addEventListener("submit", (event) => {
   if (selected === correctAnswer) {
     score++;
     showScore.innerText = score;
+    showScore.classList.add("numberAnimation");
+    setTimeout(() => {
+      showScore.classList.remove("numberAnimation");
+    }, 2000)
     console.log(score);
   } else {
     console.log("wrong answer!");
@@ -37,16 +73,7 @@ form.addEventListener("submit", (event) => {
 
 })
 
-// API
-const generalUrl = "https://opentdb.com/api.php?amount=15&category=9&type=multiple";
-const sportsUrl = "https://opentdb.com/api.php?amount=10";
-const sportsHard = "https://opentdb.com/api.php?amount=10&category=21&difficulty=hard";
-const sportsEasy = "https://opentdb.com/api.php?amount=1&category=21&difficulty=easy";
-const tenRandom = "https://opentdb.com/api.php?amount=10&category=10&type=multiple";
-
 // connect to API 
-const url = generalUrl;
-
 const getQuestions = async () => {
   try {
     const response = await fetch(url);
@@ -71,6 +98,10 @@ function loadQuestion() {
 
     if (!question) {
         console.log("No more questions!");
+        questionCard.classList.add("invisible");
+        scoreCard.classList.remove("invisible");
+        finalScore.innerText = score;
+
         return;
     } else {
     // get alternatives 
@@ -96,4 +127,3 @@ function loadQuestion() {
     });
   }}
 
-getQuestions();

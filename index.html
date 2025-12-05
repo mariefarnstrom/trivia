@@ -6,26 +6,66 @@
     <title>Trivia</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="media-queries.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <section class="scoreAndOptions">
+    <section class="scoreTracker invisible">
       <div>
         <p>Your score:</p>
         <p class="score">0</p>
       </div>
-      <!-- <div class="difficulty">
-        <label>Easy</label>
-        <input type="radio" name="difficulty" value="easy" />
-        <label>Hard</label>
-        <input type="radio" name="difficulty" value="hard" />
-      </div> -->
     </section>
-    <section class="questionCard">
+    <article class="welcome">
+      <h1>TRIVIA TIME!</h1>
+      <p>Choose a category to get started!</p>
+        <form class="chooseCategory">
+          <div class="categories">
+            <label for="Mixed">
+                <input type="radio" name="categories" id="Mixed" value="https://opentdb.com/api.php?amount=10&category=9&type=multiple">
+                Mixed
+            </label>
+            <label for="Music">
+                <input type="radio" name="categories" id="Music" value="https://opentdb.com/api.php?amount=10&category=12&type=multiple">
+                Music
+            </label>
+            <label for="Sports">
+                <input type="radio" name="categories" id="Sports" value="https://opentdb.com/api.php?amount=10&category=21&type=multiple">
+                Sports
+            </label>
+          </div>
+          <button type="submit">GO!</button>
+        </form>
+
+    </article>
+    <article class="questionCard invisible">
       <p class="question"></p>
       <form class="options">
         <button class="submitButton" type="submit">Answer</button>
       </form>
-    </section>
+    </article>
+    <article class="scoreCard invisible">
+        <p class="scoreMessage">You scored <span class="finalScore"></span> out of 15 points!</p>
+        <p>Chose category to play another round:</p>
+        <form class="chooseCategory">
+          <div class="categories">
+            <label for="Mixed">
+                <input type="radio" name="categories" id="Mixed" value="https://opentdb.com/api.php?amount=10&category=9&type=multiple">
+                Mixed
+            </label>
+            <label for="Music">
+                <input type="radio" name="categories" id="Music" value="https://opentdb.com/api.php?amount=10&category=12&type=multiple">
+                Music
+            </label>
+            <label for="Sports">
+                <input type="radio" name="categories" id="Sports" value="https://opentdb.com/api.php?amount=10&category=21&type=multiple">
+                Sports
+            </label>
+          </div>
+          <button type="submit">GO!</button>
+        </form>
+    </article>
 
     <script src="script.js"></script>
   </body>

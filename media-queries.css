@@ -1,9 +1,9 @@
 @media screen and (min-width: 600px) {
-    .questionCard {
+    .questionCard, .scoreCard {
         width: 38rem;
         align-self: center;
     }
-    .scoreAndOptions {
+    .scoreTracker {
         margin-left: 15vw;
     }
 };
