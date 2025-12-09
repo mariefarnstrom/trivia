@@ -1,10 +1,24 @@
 @media screen and (min-width: 600px) {
+    .welcome {
+        align-self: center;
+        width: 50%;
+    }
     .questionCard, .scoreCard {
         width: 38rem;
         align-self: center;
     }
     .scoreTracker {
         margin-left: 15vw;
+    }
+    .scoreHeading {
+        font-size: 1.5rem;
+    }
+    .score {
+        font-size: 4rem;
+    }
+    .scoreMessage {
+        font-size: 2rem;
+        margin: 1.5rem
     }
 };
 

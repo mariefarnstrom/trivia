@@ -121,7 +121,7 @@ function loadQuestion() {
         return;
     } else {
     // get alternatives 
-    questionSpace.innerHTML = `<pre>${currentQuestion}. ${question.question}</pre>`;
+    questionSpace.innerHTML = `<pre><span class="questionNumber">${currentQuestion}. </span> ${question.question}</pre>`;
     const alternatives = [];
     questionDetails.results[currentIndex].incorrect_answers.forEach((answer) => {
       alternatives.push(decodeHTML(answer));

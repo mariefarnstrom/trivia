@@ -1,19 +1,30 @@
 :root {
     --main-font: "Public Sans", sans-serif;
+    --primary-color: rgb(32, 33, 46);
+    --secondary-color: rgb(146, 56, 149);
+    --white: #fff;
 }
 html {
     font-size: 16px;
     box-sizing: border-box;
 }
 body {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     background-image: url(background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: var(--main-font);
+}
+
+p, h1, label {
+    color: var(--white);
 }
 
 .welcome {
     margin-top: 15vh;
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,14 +40,22 @@ body {
 }
 
 .go {
-    height: 2rem;
-    width: 4rem;
+    width: 5rem;
+    height: 2.5rem;
+    font-size: 1.4rem;
     border-radius: 25px;
+    border: none;
     margin: 2rem;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    font-weight: bold;
+}
+
+.go:hover {
+    scale: 1.2;
 }
 
 .scoreTracker {
-    color: #fff;
     margin: 1.5rem;
 }
 
@@ -67,7 +86,11 @@ pre {
     position: relative;
     height: 50vh;
     border-radius: 15px;
-    background-color: rgb(198, 216, 237);
+    background-color: var(--primary-color);
+}
+
+.questionNumber {
+    font-size: 1.5rem;
 }
 
 @keyframes slideInSlow {
@@ -85,7 +108,7 @@ pre {
 .scoreCard {
     height: 30vh;
     border-radius: 15px;
-    background-color: rgb(32, 33, 46);
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,11 +117,12 @@ pre {
 }
 
 .scoreCard p, .scoreCard label {
-    color: #fff;
+    color: var(--white);
 }
 
 .scoreMessage {
     font-size: 1.5rem;
+    margin: 1rem;
 }
 
 .invisible {
@@ -121,11 +145,13 @@ label {
 }
 
 .submitButton {
-    width: 15rem;
-    height: 1.5rem;
+    width: 10rem;
+    height: 2.5rem;
+    font-size: 1.4rem;
     border-radius: 15px;
-    background-color: rgb(76, 106, 188);
-    color: #fff;
+    border: none;
+    background-color: var(--secondary-color);
+    color: var(--white);
     position: absolute;
     bottom: 3rem;
     right: 0;
