@@ -24,10 +24,17 @@ p, h1, label {
 
 .welcome {
     margin-top: 15vh;
+    border-radius: 15px;
     background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.triviaHeading {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
 }
 
 .chooseCategory {
@@ -37,6 +44,13 @@ p, h1, label {
 }
 .categories {
     display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    gap: 1.5rem;
+}
+
+.chooseCategory label {
+    margin-right: 0.5rem;
 }
 
 .go {
@@ -56,7 +70,9 @@ p, h1, label {
 }
 
 .scoreTracker {
+    width: 6rem;
     margin: 1.5rem;
+    text-align: center;
 }
 
 @keyframes numberAnimation {
@@ -84,9 +100,13 @@ pre {
     flex-direction: column;
     align-items: center;
     position: relative;
-    height: 50vh;
+    height: 55vh;
     border-radius: 15px;
     background-color: var(--primary-color);
+}
+
+.questionCard button:hover {
+    scale: 1.1;
 }
 
 .questionNumber {
@@ -121,7 +141,8 @@ pre {
 }
 
 .scoreMessage {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
     margin: 1rem;
 }
 
@@ -148,7 +169,7 @@ label {
     width: 10rem;
     height: 2.5rem;
     font-size: 1.4rem;
-    border-radius: 15px;
+    border-radius: 25px;
     border: none;
     background-color: var(--secondary-color);
     color: var(--white);
