@@ -120,8 +120,19 @@ function loadQuestion() {
 
         return;
     } else {
-    // get alternatives 
-    questionSpace.innerHTML = `<pre><span class="questionNumber">${currentQuestion}. </span> ${question.question}</pre>`;
+    // write question to web site
+    questionSpace.textContent = '';
+    const questionText = decodeHTML(question.question);
+    const preText = document.createElement("pre");
+    const span = document.createElement("span");
+    span.className = "questionNumber";
+    span.textContent = `${currentQuestion}. `;
+
+    preText.appendChild(span);
+    preText.appendChild(document.createTextNode(questionText));
+    questionSpace.appendChild(preText);
+
+    // get all answer alternatives
     const alternatives = [];
     questionDetails.results[currentIndex].incorrect_answers.forEach((answer) => {
       alternatives.push(decodeHTML(answer));
@@ -138,7 +149,17 @@ function loadQuestion() {
     alternatives.forEach((alternative) => {
 
       const label = document.createElement("label");
-      label.innerHTML = `<input type="radio" name="answerOptions" value="${alternative}"> <pre>${alternative}</pre>`;
+
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = "answerOptions";
+      input.value = alternative;
+
+      const pre = document.createElement("pre");
+      pre.textContent = alternative;
+
+      label.appendChild(input);
+      label.appendChild(pre);
       options.appendChild(label);
     });
   }}
