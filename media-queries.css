@@ -1,10 +1,41 @@
 @media screen and (min-width: 600px) {
+    html {
+        font-size: 20px;
+    }
+    .welcome {
+        align-self: center;
+        width: 30rem;
+    }
     .questionCard, .scoreCard {
         width: 38rem;
         align-self: center;
     }
+    .scoreCard {
+        height: 40vh;
+    }
     .scoreTracker {
         margin-left: 15vw;
+    }
+
+    .scoreMessage {
+        font-size: 2rem;
+        margin: 1.5rem;
+    }
+    .categories {
+        flex-direction: row;
+        gap: 0.2rem;
+        margin-top: 0.5rem;
+    }
+    .go {
+        margin: 2rem;
+    }
+};
+
+@media screen and (min-width: 1024px) {
+    .triviaHeading {
+        font-size: 4rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
     }
 };
 

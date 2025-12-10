@@ -1,22 +1,40 @@
 :root {
     --main-font: "Public Sans", sans-serif;
+    --primary-color: rgb(32, 33, 46);
+    --secondary-color: rgb(146, 56, 149);
+    --white: #fff;
 }
 html {
     font-size: 16px;
     box-sizing: border-box;
 }
 body {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     background-image: url(background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: var(--main-font);
+}
+
+p, h1, label {
+    color: var(--white);
 }
 
 .welcome {
     margin-top: 15vh;
+    border-radius: 15px;
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.triviaHeading {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
 }
 
 .chooseCategory {
@@ -26,18 +44,35 @@ body {
 }
 .categories {
     display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    gap: 2.5rem;
+}
+
+.chooseCategory label {
+    margin-right: 0.5rem;
 }
 
 .go {
-    height: 2rem;
-    width: 4rem;
+    width: 5rem;
+    height: 2.5rem;
+    font-size: 1.4rem;
     border-radius: 25px;
-    margin: 2rem;
+    border: none;
+    margin: 2.5rem;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    font-weight: bold;
+}
+
+.go:hover {
+    scale: 1.2;
 }
 
 .scoreTracker {
-    color: #fff;
+    width: 6rem;
     margin: 1.5rem;
+    text-align: center;
 }
 
 @keyframes numberAnimation {
@@ -65,9 +100,17 @@ pre {
     flex-direction: column;
     align-items: center;
     position: relative;
-    height: 50vh;
+    height: 55vh;
     border-radius: 15px;
-    background-color: rgb(198, 216, 237);
+    background-color: var(--primary-color);
+}
+
+.questionCard button:hover {
+    scale: 1.1;
+}
+
+.questionNumber {
+    font-size: 1.5rem;
 }
 
 @keyframes slideInSlow {
@@ -76,29 +119,24 @@ pre {
     100% {transform: translateX(0);}
 }
 
-@keyframes zoomInAndFlipOut {
-    0% {transform: scale(0) rotate(180deg); opacity: 0;}
-    100% {transform: scale(1) rotate(720deg); opacity: 1;}
-    /* 100% {transform: scale(0) rotate(360deg); opacity: 0;} */
-}
-
 .scoreCard {
-    height: 30vh;
     border-radius: 15px;
-    background-color: rgb(32, 33, 46);
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     animation: slideInSlow 1s ease-out 1;
-    /* animation: zoomInAndFlipOut 1s ease-out 1; */
 }
 
 .scoreCard p, .scoreCard label {
-    color: #fff;
+    color: var(--white);
 }
 
 .scoreMessage {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 1rem;
 }
 
 .invisible {
@@ -121,11 +159,13 @@ label {
 }
 
 .submitButton {
-    width: 15rem;
-    height: 1.5rem;
-    border-radius: 15px;
-    background-color: rgb(76, 106, 188);
-    color: #fff;
+    width: 10rem;
+    height: 2.5rem;
+    font-size: 1.4rem;
+    border-radius: 25px;
+    border: none;
+    background-color: var(--secondary-color);
+    color: var(--white);
     position: absolute;
     bottom: 3rem;
     right: 0;
