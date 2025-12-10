@@ -9,7 +9,7 @@ let questions = [];
 let questionDetails = [];
 let correctAnswer = "";
 let score = 0;
-let currentIndex = 0; 
+let currentIndex = 0;
 
 // shuffle function 
 function shuffle(array) {
@@ -36,30 +36,28 @@ const finalScore = document.querySelector(".finalScore");
 
 // Category choice submit button event
 const chooseCategoryForms = document.querySelectorAll(".chooseCategory");
-// const chooseCategory = document.querySelector(".chooseCategory");
 chooseCategoryForms.forEach((form) => {
   form.addEventListener("submit", async (e) => {
-// chooseCategory.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const formData = new FormData(form);
-  const selected = formData.get("categories");
-  url = selected;
-  console.log(url);
-  // reset variables
-  currentIndex = 0;
-  questions = [];
-  score = 0;
-  showScore.innerText = score;
-  scoreCard.classList.add("invisible");
-  // remove previous answer alternatives
-  options.querySelectorAll('input[type="radio"], label').forEach(el => el.remove());
-  // get new questions
-  getQuestions();
-  welcome.classList.add("invisible");
-  setTimeout(() => {
-  questionCard.classList.remove("invisible");
-  scoreTracker.classList.remove("invisible");
-  }, 700)
+    e.preventDefault();
+    const formData = new FormData(form);
+    const selected = formData.get("categories");
+    url = selected;
+    console.log(url);
+    // reset variables
+    currentIndex = 0;
+    questions = [];
+    score = 0;
+    showScore.innerText = score;
+    scoreCard.classList.add("invisible");
+    // remove previous answer alternatives
+    options.querySelectorAll('input[type="radio"], label').forEach(el => el.remove());
+    // get new questions
+    getQuestions();
+    welcome.classList.add("invisible");
+    setTimeout(() => {
+      questionCard.classList.remove("invisible");
+      scoreTracker.classList.remove("invisible");
+    }, 700)
   })
 })
 
@@ -95,11 +93,11 @@ const getQuestions = async () => {
     const response = await fetch(url);
     questionDetails = await response.json();
     questions = questionDetails.results;
-    currentIndex = 0; 
+    currentIndex = 0;
     console.log(questionDetails);
 
     // get question 
-    loadQuestion(); 
+    loadQuestion();
 
   } catch (error) {
     console.error(error);
@@ -109,17 +107,17 @@ const getQuestions = async () => {
 const questionSpace = document.querySelector(".question");
 
 function loadQuestion() {
-    const question = questions[currentIndex];
-    let currentQuestion = currentIndex + 1;
+  const question = questions[currentIndex];
+  let currentQuestion = currentIndex + 1;
 
-    if (!question) {
-        console.log("No more questions!");
-        questionCard.classList.add("invisible");
-        scoreCard.classList.remove("invisible");
-        finalScore.innerText = score;
+  if (!question) {
+    console.log("No more questions!");
+    questionCard.classList.add("invisible");
+    scoreCard.classList.remove("invisible");
+    finalScore.innerText = score;
 
-        return;
-    } else {
+    return;
+  } else {
     // write question to web site
     questionSpace.textContent = '';
     const questionText = decodeHTML(question.question);
@@ -162,5 +160,6 @@ function loadQuestion() {
       label.appendChild(pre);
       options.appendChild(label);
     });
-  }}
+  }
+}
 
